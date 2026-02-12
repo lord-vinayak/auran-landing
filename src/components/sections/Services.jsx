@@ -1,111 +1,125 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, CheckCircle } from 'lucide-react';
-import { SERVICES_DATA } from '../../constants';
+import React, { useRef } from "react";
+import { cn } from "../../lib/utils";
+import { SERVICES_DATA } from "../../constants";
+import StackingCards, { StackingCardItem } from "../ui/stacking-cards";
+import { CheckCircle, ChevronRight, ArrowRight } from "lucide-react";
+
+// Map your theme colors to bold Tailwind classes for the card backgrounds
+const colorStyles = {
+  teal: "bg-teal-600 text-white",
+  indigo: "bg-indigo-600 text-white",
+  rose: "bg-rose-600 text-white",
+  default: "bg-slate-800 text-white",
+};
+
+const iconStyles = {
+  teal: "text-teal-600 bg-white",
+  indigo: "text-indigo-600 bg-white",
+  rose: "text-rose-600 bg-white",
+  default: "text-slate-900 bg-white",
+};
 
 const Services = () => {
-  const [activeTab, setActiveTab] = useState("medtech");
-  const activeService = SERVICES_DATA[activeTab];
+  const containerRef = useRef(null);
+  const servicesArray = Object.values(SERVICES_DATA);
 
   return (
-    <section id="services" className="py-24 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            A Triple Threat Approach
-          </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-            We don't just write code or find resumes. We create ecosystems where technology, healthcare, and people thrive together.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Tab Navigation - Left Side */}
-          <div className="lg:col-span-4 space-y-4">
-            {Object.entries(SERVICES_DATA).map(([key, service]) => {
-              const Icon = service.icon;
-              const isActive = activeTab === key;
-              
-              return (
-                <button
-                  key={key}
-                  onClick={() => setActiveTab(key)}
-                  className={`w-full text-left active:scale-95 p-6 rounded-2xl transition-all duration-300 border-2 ${
-                    isActive
-                      ? `bg-${service.color}-50 border-${service.color}-500 shadow-md transform scale-[1.02]`
-                      : "bg-white border-transparent hover:bg-slate-50 hover:border-slate-200"
-                  }`}
-                >
-                  <div className="flex items-center space-x-4">
-                    <div className={`p-3 rounded-xl transition-colors ${
-                      isActive ? `bg-${service.color}-500 text-white` : "bg-slate-100 text-slate-500"
-                    }`}>
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className={`font-bold text-lg ${isActive ? `text-${service.color}-900` : "text-slate-900"}`}>
-                        {service.title}
-                      </h3>
-                      <p className="text-sm text-slate-500">
-                        {key === 'medtech' && "Healthcare Innovation"}
-                        {key === 'tech' && "Software & Cloud"}
-                        {key === 'manpower' && "Staffing & Recruitment"}
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Content Area - Right Side */}
-          <div className="lg:col-span-8">
-            <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-xl shadow-slate-200/50 h-full relative overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative z-10"
-                >
-                  <div className="flex items-center justify-between mb-6">
-                    <activeService.icon className={`w-12 h-12 text-${activeService.color}-500 mb-4`} />
-                    <div className={`hidden md:block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-${activeService.color}-100 text-${activeService.color}-700`}>
-                      Core Service
-                    </div>
-                  </div>
-
-                  <h3 className="text-3xl font-bold text-slate-900 mb-6">
-                    {activeService.title}
-                  </h3>
-                  <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-                    {activeService.description}
-                  </p>
-
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {activeService.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-50 transition-colors">
-                        <CheckCircle className={`w-5 h-5 flex-shrink-0 text-${activeService.color}-500`} />
-                        <span className="font-medium text-slate-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="mt-10 pt-8 border-t border-slate-100">
-                    <button className={`text-${activeService.color}-600 font-bold active:scale-95 flex items-center group hover:text-${activeService.color}-700`}>
-                      Learn more about {activeService.title}
-                      <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+    <div id="services" className="relative w-full bg-slate-50">
+      <StackingCards totalCards={servicesArray.length} className="relative">
+        {/* --- Intro Section (Scrolls away) --- */}
+        <div className="h-screen w-full flex flex-col justify-center items-center text-center px-4">
+          <div className="max-w-3xl mx-auto space-y-2">
+            <h2 className="text-4xl md:text-7xl font-bold text-slate-900 leading-tight">
+              A Triple Threat <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">
+                Approach
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-xl mx-auto">
+              We don't just write code or find resumes. We create ecosystems
+              where technology, healthcare, and people thrive together.
+            </p>
+            <div className="pt-8 flex justify-center items-center text-slate-400 font-medium animate-bounce">
+              Scroll Down <ArrowRight className="ml-2 w-5 h-5 rotate-90" />
             </div>
           </div>
         </div>
-      </div>
-    </section>
+
+        {/* --- Stacking Cards Loop --- */}
+        {servicesArray.map((service, index) => {
+          const cardColorClass =
+            colorStyles[service.color] || colorStyles.default;
+          const iconColorClass =
+            iconStyles[service.color] || iconStyles.default;
+          const Icon = service.icon;
+
+          return (
+            <StackingCardItem
+              key={index}
+              index={index}
+              className="h-screen flex items-center justify-center p-4 md:p-8">
+              <div
+                className={cn(
+                  cardColorClass,
+                  "w-full max-w-6xl h-[85vh] md:h-[70vh] rounded-[3rem] shadow-2xl flex flex-col md:flex-row overflow-hidden relative",
+                )}>
+                {/* Decorative Background Circle */}
+                <div className="absolute -right-20 -top-20 w-96 h-96 bg-white opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+
+                {/* Left Content: Text */}
+                <div className="flex-1 p-8 md:p-16 flex flex-col justify-center relative z-10">
+                  <div className="mb-8">
+                    <div
+                      className={cn(
+                        "w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg mb-8",
+                        iconColorClass,
+                      )}>
+                      <Icon className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-3xl md:text-5xl font-bold mb-6">
+                      {service.title}
+                    </h3>
+                    <p className="text-lg md:text-xl opacity-90 leading-relaxed max-w-lg">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Features Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center space-x-3">
+                        <CheckCircle className="w-6 h-6 shrink-0 opacity-80" />
+                        <span className="font-medium">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button className="w-fit bg-white text-slate-900 px-8 py-4 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-transform flex items-center group">
+                    Explore {service.title}
+                    <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
+                {/* Right Content: Visual/Image Placeholder */}
+                <div className="hidden md:flex w-1/3 h-full bg-black/10 items-center justify-center relative">
+                  <div className="absolute inset-0 bg-gradient-to-l from-black/20 to-transparent"></div>
+                  <h4 className="text-[12rem] font-black opacity-10 rotate-90 select-none">
+                    0{index + 1}
+                  </h4>
+                </div>
+              </div>
+            </StackingCardItem>
+          );
+        })}
+
+        {/* --- Outro / Spacer --- */}
+        <div className="h-[50vh] w-full flex items-center justify-center bg-slate-50">
+          <h2 className="text-4xl md:text-8xl font-black text-slate-200 uppercase tracking-tighter">
+            Build Future
+          </h2>
+        </div>
+      </StackingCards>
+    </div>
   );
 };
 
