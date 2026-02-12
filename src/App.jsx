@@ -448,9 +448,7 @@ const LandingPage = () => {
             <button className="bg-white text-indigo-900 active:scale-95 px-8 py-4 rounded-full font-bold shadow-xl hover:bg-indigo-50 transition-colors text-lg">
               Schedule a Consultation
             </button>
-            <button className="bg-indigo-800/50 backdrop-blur-sm text-white border border-white/20 active:scale-95 px-8 py-4 rounded-full font-bold hover:bg-indigo-800 transition-colors text-lg">
-              View Case Studies
-            </button>
+            
           </div>
         </div>
       </section>
