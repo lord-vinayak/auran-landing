@@ -30,7 +30,7 @@ const Hero = () => {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center space-x-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 mb-8 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
           <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
-          <span className="text-sm font-medium text-slate-600">
+          <span className="font-light text-sm text-slate-600">
             The Future of Health & Tech is Here
           </span>
         </motion.div>
@@ -38,12 +38,12 @@ const Hero = () => {
         <AnimatedText
           text="We Build Solutions"
           effect="word-variation-3"
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 leading-[1.1]"
+          className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-slate-900 leading-[1.1]"
         />
         <AnimatedText
           text="That Empower Humanity"
           effect="word-variation-3"
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-teal-700 leading-[1.1]"
+          className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-teal-700 leading-[1.1]"
         />
 
         <AnimatedText
@@ -51,7 +51,7 @@ const Hero = () => {
           cutting-edge software, and world-class talent. We are the engine
           behind next-gen healthcare ecosystems."
           effect="char-variation-5"
-          className="mt-4 text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="mt-4 font-normal text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed"
         />
 
         <motion.div

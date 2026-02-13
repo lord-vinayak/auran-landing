@@ -29,10 +29,9 @@ export const SERVICES_DATA = {
 };
 
 export const STATS_DATA = [
-  { label: "Projects Delivered", value: "250+" },
-  { label: "Medical Partners", value: "45+" },
-  { label: "Talent Placed", value: "1.2k" },
-  { label: "Client Growth", value: "300%" },
+  { label: "Projects Delivered", value: "250" },
+  { label: "Medical Partners", value: "45" },
+  { label: "Talent Placed", value: "100" },
 ];
 
 export const WHY_US_DATA = [

@@ -17,8 +17,8 @@ const Navbar = () => {
       {/* The Floating Glass Pill */}
       <nav className="relative z-20 bg-white/40 backdrop-blur-xl border border-white/60 shadow-lg shadow-slate-200/20 rounded-full px-4 md:px-6 py-3 flex items-center justify-between transition-all duration-300">
         {/* Logo */}
-        <div className="flex items-center space-x-3 cursor-pointer group">
-          <div className="flex items-center justify-center h-10 w-10 overflow-hidden rounded-full bg-white/50 shadow-sm border border-white/40 group-hover:scale-105 transition-transform duration-300">
+        <div  className="flex items-center space-x-3 cursor-pointer group">
+          <div  className="flex items-center justify-center h-10 w-10 overflow-hidden rounded-full bg-white/50 shadow-sm border border-white/40 group-hover:scale-105 transition-transform duration-300">
             <img
               src="/auran.png"
               alt="Logo"
@@ -41,7 +41,7 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="relative px-5 py-2 text-sm font-medium text-slate-600 rounded-full transition-all duration-300 hover:text-slate-900 hover:bg-white/60 hover:shadow-sm">
+              className="relative px-5 py-2 text-sm font-normal text-slate-600 rounded-full transition-all duration-300 hover:text-slate-900 hover:bg-white/60 hover:shadow-sm">
               {link.name}
             </a>
           ))}
@@ -49,7 +49,7 @@ const Navbar = () => {
 
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center space-x-4">
-          <button className="hidden md:block active:scale-95 bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-teal-600 transition-all duration-300 shadow-md shadow-slate-900/10 font-medium text-sm hover:-translate-y-0.5">
+          <button className="hidden md:block active:scale-95 bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-teal-600 transition-all duration-300 shadow-md shadow-slate-900/10 font-normal text-sm hover:-translate-y-0.5">
             Get Started
           </button>
 
@@ -80,12 +80,12 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-base text-slate-700 font-medium px-4 py-3 rounded-2xl hover:bg-white/60 transition-colors"
+                  className="text-base text-slate-700 font-normal px-4 py-3 rounded-2xl hover:bg-white/60 transition-colors"
                   onClick={toggleMenu}>
                   {link.name}
                 </a>
               ))}
-              <button className="active:scale-95 bg-slate-900 text-white px-6 py-3.5 rounded-2xl w-full font-semibold shadow-md mt-2 hover:bg-teal-600 transition-colors">
+              <button className="active:scale-95 bg-slate-900 text-white px-6 py-3.5 rounded-2xl w-full font-bold shadow-md mt-2 hover:bg-teal-600 transition-colors">
                 Get Started
               </button>
             </div>
