@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import Navbar from './components/layouts/Navbar';
-import Hero from './components/sections/Hero';
-import Stats from './components/sections/Stats';
-import Services from './components/sections/Services';
-import WhyUs from './components/sections/WhyUs';
-import CTA from './components/sections/CTA';
-import Footer from './components/layouts/Footer';
-import Lenis from 'lenis';
+import React, { useEffect } from "react";
+import Navbar from "./components/layouts/Navbar";
+import Hero from "./components/sections/Hero";
+import Stats from "./components/sections/Stats";
+import Services from "./components/sections/Services";
+import Servicesn from "./components/sections/Services-new";
+import WhyUs from "./components/sections/WhyUs";
+import CTA from "./components/sections/CTA";
+import Footer from "./components/layouts/Footer";
+import Lenis from "lenis";
 
 const App = () => {
   useEffect(() => {
@@ -29,14 +30,14 @@ const App = () => {
   }, []);
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-teal-200">
-      
       <Navbar />
       <Hero />
       <Stats />
-      <Services />
+      <Servicesn />
       <WhyUs />
       <CTA />
       <Footer />
     </div>
   );
-}; export default App;
+};
+export default App;
