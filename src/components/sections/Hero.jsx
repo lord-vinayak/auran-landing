@@ -21,7 +21,7 @@ const Hero = () => {
       </video>
 
       {/* Overlay: Helps text stand out against the video */}
-      <div className="absolute inset-0 bg-slate-50/70 backdrop-blur-[2px] z-0"></div>
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px] z-0"></div>
 
       <div className="max-w-7xl mx-auto text-center relative z-10">
         <motion.div
@@ -43,7 +43,7 @@ const Hero = () => {
         <AnimatedText
           text="That Empower Humanity"
           effect="word-variation-3"
-          className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-indigo-500 to-purple-600 "
+          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-teal-700 leading-[1.1]"
         />
 
         <AnimatedText
